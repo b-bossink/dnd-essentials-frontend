@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { CharacterService } from './api/character-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dnd-essentials-frontend';
+
+  constructor(private http: HttpClient){
+    new CharacterService(http).getAll();
+  }
 }
