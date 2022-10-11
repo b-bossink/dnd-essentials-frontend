@@ -10,7 +10,6 @@ import { CharacterService } from './api/character-service.service';
 export class AppComponent {
   title = 'dnd-essentials-frontend';
 
-  constructor(private http: HttpClient){
-    new CharacterService(http).getAll();
+  constructor(){
   }
 }
