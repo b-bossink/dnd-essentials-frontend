@@ -1,0 +1,24 @@
+<h3>Editing {{character.name}}</h3>
+<form *ngIf="character != undefined" #characterForm="ngForm" (ngSubmit)="onSubmit(characterForm.value)"> 
+    Name:
+    <input type="text" name="name" value="{{character.name}}" ngModel><br>
+    Race:
+    <input type="text" name="race" value="{{character.race}}" ngModel><br>
+    Class:
+    <input type="text" name="class" value="{{character.class}}" ngModel><br>
+    Strength:
+    <input type="number" name="strength" value="{{character.strength}}" ngModel><br>
+    Dexterity:
+    <input type="number" name="dexterity" value="{{character.dexterity}}" ngModel><br>
+    Constitution:
+    <input type="number" name="constitution" value="{{character.constitution}}" ngModel><br>
+    Intelligence:
+    <input type="number" name="intelligence" value="{{character.intelligence}}" ngModel><br>
+    Wisdom:
+    <input type="number" name="wisdom" value="{{character.wisdom}}" ngModel><br>
+    Charisma:
+    <input type="number" name="charisma" value="{{character.charisma}}" ngModel><br>
+
+    <input type="hidden" name="ownerId" value="{{1}}">
+    <input value="Cancel"><input type="submit" value="Save">
+</form>

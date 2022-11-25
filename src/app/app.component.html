@@ -1,2 +1,19 @@
-<app-character-data></app-character-data>
-<router-outlet></router-outlet>
+<div class="app">
+    <div class="titlebar">
+        <h1>DNDEssentials</h1>
+        <div class="account">
+            <p *ngIf="true">Username | Log out</p>
+            <ng-template #elseBlock>
+                <p>Log in</p>
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <a routerLink="/character">My Characters</a>
+        <a routerLink="/campaign">My Campaigns</a>
+    </div>
+    <div style="grid-column: span 12;">
+        <router-outlet> </router-outlet>
+    </div>
+</div>

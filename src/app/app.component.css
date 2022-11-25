@@ -1,0 +1,63 @@
+
+
+.titlebar {
+    grid-column: span 12;
+    background-color: darkcyan;
+    margin: 0;
+    color: antiquewhite;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+}
+
+.titlebar h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    grid-column:  span 2;
+    justify-self: center;
+}
+
+.navbar {
+    grid-column: span 12;
+    background-color: cornflowerblue;
+    margin: 0;
+    color: antiquewhite;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+}
+
+.navbar a {
+    grid-column: span 1;
+    justify-self: center;
+}
+
+.navbar ul {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column: span 12;
+    justify-self: center;
+}
+
+.account {
+    grid-column: 11 / span 2;
+    justify-self: center;
+}
+
+.app {
+  margin:0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0px;
+}
+
+router-outlet {
+    grid-column: span 12;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul, li {
+    list-style: none;
+}

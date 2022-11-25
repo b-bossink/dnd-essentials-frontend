@@ -1,0 +1,10 @@
+<p>Login:</p>
+
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)"> 
+    Username or emailaddress
+    <input type="text" name="name" ngModel><br>
+    Password:
+    <input type="password" name="password" ngModel><br>
+    <input type="submit" value="Login">
+</form>
+Don't have an account? <a routerLink="/register">Register here!</a>

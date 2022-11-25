@@ -7,4 +7,6 @@ export abstract class APIService {
   constructor(private httpClient:HttpClient) { 
       this.http = httpClient;
   }
+
+  protected abstract getURL() : string;
 }

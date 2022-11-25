@@ -7,34 +7,29 @@ import { APIService } from './api-service';
 }) 
 
 export class CharacterService extends APIService {
-  public getAll() {
-    return this.http.get(this.getURL());
+  public async getAll() {
+    return await this.http.get(this.getURL());
   }
 
-  public get(id: number) {
-    return this.http.get(this.getURL() + "/" + id);
+  public async get(id: number) {
+    return await this.http.get(this.getURL() + "/" + id);
   }
 
-  public post(character: {name: string, class: string, race: string, strength: number, dexterity: number,
-    constitution: number, intelligence: number, wisdom: number, charisma: number, id: number}) {
-      character.id = 0;
-      console.log(character)
-
-      this.http.post(this.getURL(), character).subscribe((response) => {
-        console.log(response);
-      });
-  }
-
-  public update(character: {id: number, name: string, class: string, race: string, strength: number, dexterity: number,
+  public async post(character: {name: string, ownerId: number, class: string, race: string, strength: number, dexterity: number,
     constitution: number, intelligence: number, wisdom: number, charisma: number}) {
-      console.log(character)
+      return await this.http.post(this.getURL(), character);
+  }
+
+  public async update(id: number, character: {name: string, ownerId: number, class: string, race: string, strength: number, dexterity: number,
+    constitution: number, intelligence: number, wisdom: number, charisma: number}) {
+      return await this.http.put(this.getURL() + "/" + id, character);
     }
 
-  public delete(id: number) {
-
+  public async delete(id: number) {
+    return await this.http.delete(this.getURL() + "/" + id);
   }
 
-  private getURL(): string {
+  protected getURL(): string {
     return this.root + "character";
   }
 }

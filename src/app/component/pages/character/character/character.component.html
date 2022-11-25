@@ -1,0 +1,14 @@
+<h1> {{character.name}} </h1>
+CLASS: {{character.class}}, RACE: {{character.race}}.
+
+This character has the following stats:
+<ul>
+    <li>STR: {{character.strength}}</li>
+    <li>DEX: {{character.dexterity}}</li>
+    <li>CON: {{character.constitution}}</li>
+    <li>INT: {{character.intelligence}}</li>
+    <li>WIS: {{character.wisdom}}</li>
+    <li>CHA: {{character.charisma}}</li>
+</ul>
+
+<button routerLink="./edit">Edit</button> <button (click)="delete()">Delete</button>
