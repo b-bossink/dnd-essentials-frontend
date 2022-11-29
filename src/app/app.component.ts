@@ -8,7 +8,7 @@ import { NotificationService } from './api/notification/notification.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'dnd-essentials-frontend';
+  title = 'DND Essentials';
 
 
   constructor(public notificationService: NotificationService) {}
