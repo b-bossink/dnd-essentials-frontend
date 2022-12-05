@@ -1,6 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Character } from '../models';
 import { APIService } from './api-service';
+import { StorageKeys } from '../storage-keys';
 
 @Injectable() 
 export class CharacterService extends APIService {
@@ -13,7 +15,7 @@ export class CharacterService extends APIService {
   }
 
   public async post(character: Character) {
-      return await this.http.post(this.getURL(), character);
+      return await this.http.post(this.getURL() + this.tokenParam(), character);
   }
 
   public async update(id: number, character: Character) {
@@ -21,23 +23,14 @@ export class CharacterService extends APIService {
     }
 
   public async delete(id: number) {
-    return await this.http.delete(this.getURL() + "/" + id);
+    return await this.http.delete(this.getURL() + "/" + id + this.tokenParam());
   }
 
   protected getURL(): string {
     return this.root + "character";
   }
-}
 
-interface Character {
-  name: string;
-  ownerId: number;
-  class: string;
-  race: string;
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
+  private tokenParam() {
+    return "?token=" + localStorage.getItem(StorageKeys.token);
+  }
 }

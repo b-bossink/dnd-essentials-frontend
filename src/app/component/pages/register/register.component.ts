@@ -14,7 +14,7 @@ export class RegisterComponent {
 
 
   async onSubmit(credentials: { username: string, email: string, password: string }) {
-    (await new AuthenticationService(this.http).register(credentials)).subscribe({
+    new AuthenticationService(this.http).register(credentials).subscribe({
       next: async (res) => 
         await this.router.navigate(['login']),
       error: async (err) => 

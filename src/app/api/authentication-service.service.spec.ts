@@ -24,7 +24,7 @@ describe('AuthenticationService', () => {
     );
     const req = httpMock.expectOne("https://localhost:5001/api/authentication/login?usernameOrEmail=user&password=password");
     expect(req.request.method).toBe('POST');
-    req.flush(true);
+    req.flush({success: true, token: "abc"});
   });
 
   it('login incorrectly', async () => {

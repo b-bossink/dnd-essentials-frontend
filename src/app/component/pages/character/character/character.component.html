@@ -1,4 +1,6 @@
-<h1> {{character.name}} </h1>
+<div *ngIf="character.name != null && ownerName != null else loading">
+<h1> {{character.name}} </h1> created by <a>{{ownerName}}</a>
+<br>
 CLASS: {{character.class}}, RACE: {{character.race}}.
 
 This character has the following stats:
@@ -12,3 +14,8 @@ This character has the following stats:
 </ul>
 
 <button routerLink="./edit">Edit</button> <button (click)="delete()">Delete</button>
+</div>
+
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>

@@ -20,7 +20,7 @@ export class CharacterCreationComponent implements OnInit {
   async onSubmit(character: {
     name: string, ownerId: number, class: string, race: string, strength: number, dexterity: number,
     constitution: number, intelligence: number, wisdom: number, charisma: number}) {
-    character.ownerId = 1;
+    character.ownerId = Number(localStorage.getItem("userid"));
     (await new CharacterService(this.http).post(character)).subscribe({
       next: async (res) => {
         await this.router.navigate(['character']);

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as signalR from "@microsoft/signalr"
+import { StorageKeys } from 'src/app/storage-keys';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,7 @@ export class NotificationService {
     }
 
     public sendUserId = async () => {
-      var id = this.getRandomInt(1, 3)
-
-      console.log("Your userid is " + id);
+      const id = Number(localStorage.getItem(StorageKeys.userId));
       await this.hubConnection.invoke('identify', id)
       .catch(err => console.error(err));
     }

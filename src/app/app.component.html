@@ -2,9 +2,9 @@
     <div class="titlebar">
         <h1>DNDEssentials</h1>
         <div class="account">
-            <p *ngIf="true">Username | Log out</p>
+            <p *ngIf="isLoggedIn() else elseBlock">{{username()}} | <a (click)="logout()">Log out</a></p>
             <ng-template #elseBlock>
-                <p>Log in</p>
+                <p><a routerLink="/login">Log in</a></p>
             </ng-template>
         </div>
     </div>

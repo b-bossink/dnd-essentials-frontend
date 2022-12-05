@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';  
 
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { LoginComponent } from './component/pages/login/login.component';
 import { RegisterComponent } from './component/pages/register/register.component';
 import { AllCharactersComponent } from './component/pages/character/all-characters/all-characters.component';
 import { EditCharacterComponent } from './component/pages/character/edit-character/edit-character.component';
+import { LoadingComponent } from './component/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { EditCharacterComponent } from './component/pages/character/edit-charact
     LoginComponent,
     RegisterComponent,
     AllCharactersComponent,
-    EditCharacterComponent
+    EditCharacterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
