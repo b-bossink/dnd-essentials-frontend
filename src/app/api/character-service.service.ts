@@ -6,12 +6,17 @@ import { StorageKeys } from '../storage-keys';
 
 @Injectable() 
 export class CharacterService extends APIService {
-  public async getAll() {
-    return await this.http.get(this.getURL());
-  }
 
   public async get(id: number) {
     return await this.http.get(this.getURL() + "/" + id);
+  }
+
+  public async getAllRaces() {
+    return await this.http.get<[]>(this.getURL() + "/races");
+  }
+
+  public async getAllClasses() {
+    return await this.http.get<[]>(this.getURL() + "/classes");
   }
 
   public async post(character: Character) {
@@ -28,9 +33,5 @@ export class CharacterService extends APIService {
 
   protected getURL(): string {
     return this.root + "character";
-  }
-
-  private tokenParam() {
-    return "?token=" + localStorage.getItem(StorageKeys.token);
   }
 }

@@ -3,9 +3,17 @@
     Name:
     <input type="text" name="name" ngModel><br>
     Race:
-    <input type="text" name="race" ngModel><br>
+    <select name="race" ngModel>
+        <option *ngFor="let r of races">
+            {{r.name}}
+        </option>
+    </select><br>
     Class:
-    <input type="text" name="class" ngModel><br>
+    <select name="class" ngModel>
+        <option *ngFor="let c of classes">
+            {{c.name}}
+        </option>
+    </select><br>
     Strength:
     <input type="number" name="strength" ngModel><br>
     Dexterity:

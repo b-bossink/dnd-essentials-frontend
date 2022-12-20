@@ -10,11 +10,14 @@ import { CharacterService } from 'src/app/api/character-service.service';
 })
 export class CharacterCreationComponent implements OnInit {
   owner = 0;
+  races = [];
+  classes = [];
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.allRacesAndClasses();
   }
 
   async onSubmit(character: {
@@ -38,7 +41,16 @@ export class CharacterCreationComponent implements OnInit {
       }
     }
     );
+  }
 
+  private async allRacesAndClasses() {
+    (await new CharacterService(this.http).getAllRaces()).subscribe({
+      next: r => this.races = r
+    });
+
+    (await new CharacterService(this.http).getAllClasses()).subscribe({
+      next: c => this.classes = c
+    });
   }
 
 }
