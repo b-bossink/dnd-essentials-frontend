@@ -8,13 +8,13 @@ declare global {
     }
 }
 
-const login = (email: string, password: string) => {
-    cy.clearLocalStorageSnapshot();
-    cy.visit('http://localhost:4200/login')
+const login = (initialPage: string, email: string, password: string) => {
+    cy.visit('http://localhost:4200');
+    cy.contains('Log in').click();
     cy.get('[name=name]').type(email)
     cy.get('[name=password]').type(`${password}`)
     cy.get(('[type=submit]')).click();
-    cy.saveLocalStorage();
+    cy.wait(1000);
 };
 
 Cypress.Commands.addAll({ login })

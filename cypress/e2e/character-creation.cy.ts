@@ -1,16 +1,20 @@
 import { e2eUtils } from "./e2e-utils";
 
-describe('Visit character creation page', () => {
-  before(() => cy.login('boris', 'wachtwoord123'));
+describe('Create a character, then view it and delete it', () => {
+  before(() => cy.login('http://localhost:4200/character', 'boris', 'wachtwoord123'));
   beforeEach(() => cy.restoreLocalStorage());
   afterEach(() => cy.saveLocalStorage());
   it('visit', () => {
-    cy.visit('http://localhost:4200');
+    cy.visit("http://localhost:4200/character")
     cy.contains('My Characters').click();
+    cy.url().should('eq', 'http://localhost:4200/character');
     cy.contains('Create a new character').click();
+    cy.url().should('eq', 'http://localhost:4200/character/create');
+    cy.saveLocalStorage();
   });
 
   it('create', () => {
+    cy.restoreLocalStorage();
     const textFields = e2eUtils.inputOfType('text');
     const numFields = e2eUtils.inputOfType('number');
     e2eUtils.inputWithName(textFields, 'name').type('My Awesome Character');
@@ -28,5 +32,7 @@ describe('Visit character creation page', () => {
   it('view', () => {
     cy.url().should('eq', 'http://localhost:4200/character');
     cy.contains('My Awesome Character').click();
+    cy.contains('Delete').click();
+    cy.url().should('eq', 'http://localhost:4200/character');
   })
 });
