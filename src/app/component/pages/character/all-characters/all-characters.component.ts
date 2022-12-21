@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from 'src/app/api/character-service.service';
+import { UserService } from 'src/app/api/user-service.service';
+import { StorageKeys } from 'src/app/storage-keys';
 
 @Component({
   selector: 'app-all-characters',
@@ -17,7 +19,7 @@ export class AllCharactersComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.characters = (await new CharacterService(this.http).getAll()).subscribe({
+    this.characters = new UserService(this.http).getCharacters(Number(localStorage.getItem(StorageKeys.userId))).subscribe({
       next: c => this.characters = c,
       error: err => alert("Failed to load characters: " + err.message)
     });

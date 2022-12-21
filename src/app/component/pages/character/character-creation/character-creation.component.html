@@ -3,28 +3,29 @@
     Name:
     <input type="text" name="name" ngModel><br>
     Race:
-    <select name="race" ngModel>
-        <option *ngFor="let r of races">
+    <select #r id="race" name="race" [ngModel]="r.value">
+        <option *ngFor="let r of races" [value]="r.index + '|' + r.name">
             {{r.name}}
         </option>
     </select><br>
     Class:
-    <select name="class" ngModel>
+    <select #c name="class" [ngModel]="c.value">
         <option *ngFor="let c of classes">
             {{c.name}}
         </option>
-    </select><br>
+    </select><br><br>
+    STATS: <button type="button" id="genBtn" (click)="showGenerator()" disabled>Throw some dice!</button> <br>
     Strength:
-    <input type="number" name="strength" ngModel><br>
+    <input type="number" name="strength" [ngModel]="str"><br>
     Dexterity:
-    <input type="number" name="dexterity" ngModel><br>
+    <input type="number" name="dexterity" [ngModel]="dex"><br>
     Constitution:
-    <input type="number" name="constitution" ngModel><br>
+    <input type="number" name="constitution" [ngModel]="con"><br>
     Intelligence:
-    <input type="number" name="intelligence" ngModel><br>
+    <input type="number" name="intelligence" [ngModel]="int"><br>
     Wisdom:
-    <input type="number" name="wisdom" ngModel><br>
+    <input type="number" name="wisdom" [ngModel]="wis"><br>
     Charisma:
-    <input type="number" name="charisma" ngModel><br>
+    <input type="number" name="charisma" [ngModel]="cha"><br>
     <input type="submit" value="Create">
 </form>

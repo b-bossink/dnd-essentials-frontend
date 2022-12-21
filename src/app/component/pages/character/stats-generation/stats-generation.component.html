@@ -1,0 +1,52 @@
+<div class="popup">
+    <h3>Generate some stats for character of race '{{data.race}}'</h3>
+    Select how many dice you want to throw:
+    <form #dice="ngForm" (ngSubmit)="setDice(dice.value)">
+        <div>
+            D20 <input type="number" name="d20" [min]="0" ngModel>
+            D12 <input type="number" name="d12" [min]="0"   ngModel>
+            D10 <input type="number" name="d10" [min]="0"  ngModel>
+            D8 <input type="number" name="d8" [min]="0"  ngModel>
+            D6 <input type="number" name="d6" [min]="0"  ngModel>
+            D4 <input type="number" name="d4" [min]="0"  ngModel>
+        </div>
+        <input type="submit" id="gen" value="GENERATE!">
+    </form>
+
+    <br>
+    <form #stats="ngForm" (ngSubmit)="onSubmit(stats.value)">
+        <span>
+        STR:
+        <input type="text" value="{{strength.value}}" disabled>
+        </span> + {{strength.bonus}} <b>= {{strength.total}}</b>
+        <input type="hidden" name="strength" [ngModel]="strength.total"><br>
+        <span>
+        DEX:
+        <input type="text" value="{{dexterity.value}}" disabled>
+        </span> + {{dexterity.bonus}} <b>= {{dexterity.total}}</b>
+        <input type="hidden" name="dexterity" [ngModel]="dexterity.total"><br>
+        <span>
+        CON:
+        <input type="text" value="{{constitution.value}}" disabled>
+        </span> + {{constitution.bonus}} <b>= {{constitution.total}}</b>
+        <input type="hidden" name="constitution" [ngModel]="constitution.total"><br>
+        <span>
+        INT:
+        <input type="text" value="{{intelligence.value}}" disabled>
+        </span> + {{intelligence.bonus}} <b>= {{intelligence.total}}</b>
+        <input type="hidden" name="intelligence" [ngModel]="intelligence.total"><br>
+        <span>
+        WIS:
+        <input type="text" value="{{wisdom.value}}" disabled>
+        </span> + {{wisdom.bonus}} <b>= {{wisdom.total}}</b>
+        <input type="hidden" name="wisdom" [ngModel]="wisdom.total"><br>
+        <span>
+        CHA:
+        <input type="text" value="{{charisma.value}}" disabled>
+        </span> + {{charisma.bonus}} <b>= {{charisma.total}}</b>
+        <input type="hidden" name="charisma" [ngModel]="charisma.total"><br>
+    
+        <button type="button" (click)="closeWithoutSubmitting()">Nevermind</button>
+        <input type="submit" value="Use these stats">
+    </form>
+</div>

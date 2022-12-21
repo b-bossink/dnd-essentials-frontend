@@ -50,6 +50,10 @@
   gap: 0px;
 }
 
+.cdk-overlay-container {
+    background-color: aqua;
+}
+
 router-outlet {
     grid-column: span 12;
 }

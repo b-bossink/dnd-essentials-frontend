@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let c of campaigns">
+        <a [routerLink]="['.', c.id]">{{c.name}}</a>
+    </li>
+</ul>
+
+<button routerLink="./create">Create a new campaign</button>
