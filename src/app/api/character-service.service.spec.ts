@@ -4,22 +4,6 @@ import { CharacterService } from './character-service.service';
 import { HttpStatusCode } from '@angular/common/http';
 
 const testCharacters = {
-  get: [
-    {
-      "id": 23,
-      "name": "My Awesome Character",
-      "class": "Dragonborn",
-      "race": "Human",
-      "strength": 1,
-      "dexterity": 2,
-      "constitution": 3,
-      "intelligence": 4,
-      "wisdom": 5,
-      "charisma": 6,
-      "ownerID": 1,
-      "campaignIDs": []
-    }
-  ],
   post: {
     name: "My Awesome Character",
     ownerId: 1,
@@ -47,18 +31,6 @@ describe('CharacterService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('read data', async () => {
-    (await service.getAll()).subscribe(
-      r => {
-        expect(r).toBeTruthy();
-        expect(r).toBe(testCharacters.get);
-      }
-    );
-    const req = httpMock.expectOne("https://localhost:5001/api/character");
-    expect(req.request.method).toBe('GET');
-    req.flush(testCharacters.get)
-  });
-
   it('post data', async () => {
     (await service.post(testCharacters.post)).subscribe(
       r => {
@@ -66,7 +38,7 @@ describe('CharacterService', () => {
         expect(r).toBe(HttpStatusCode.Ok);
       }
     );
-    const req = httpMock.expectOne("https://localhost:5001/api/character");
+    const req = httpMock.expectOne("https://localhost:5001/api/character?token=abc");
     expect(req.request.method).toBe('POST');
     req.flush(HttpStatusCode.Ok);
   });
@@ -78,7 +50,7 @@ describe('CharacterService', () => {
         expect(r).toBe(HttpStatusCode.Ok);
       }
     );
-    const req = httpMock.expectOne("https://localhost:5001/api/character/23");
+    const req = httpMock.expectOne("https://localhost:5001/api/character/23?token=abc");
     expect(req.request.method).toBe('DELETE');
     req.flush(HttpStatusCode.Ok);
   });

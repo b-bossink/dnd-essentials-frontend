@@ -28,5 +28,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": false
-  }
+  },
+  "exclude": ["karma.conf.js"],
+  "files": ["karma.conf.js"]
 }
