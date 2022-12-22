@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, Subject } from 'rxjs';
+import { StorageKeys } from '../storage-keys';
 import { APIService } from './api-service';
 
 @Injectable({
@@ -11,9 +12,9 @@ export class AuthenticationService extends APIService {
       this.http.post<LoginResponse>(this.getURL() + `/login?usernameOrEmail=${credentials.name}&password=${credentials.password}`,
         credentials).subscribe({next: res => {
           if (res.success) {
-            localStorage.setItem("token", res.token);
-            localStorage.setItem("username", res.userInfo.username);
-            localStorage.setItem("userid", res.userInfo.id.toString());
+            localStorage.setItem(StorageKeys.token, res.token);
+            localStorage.setItem(StorageKeys.username, res.userInfo.username);
+            localStorage.setItem(StorageKeys.userId, res.userInfo.id.toString());
             result.next(true);
           } else {
             result.next(false);

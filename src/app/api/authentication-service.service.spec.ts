@@ -16,7 +16,7 @@ describe('AuthenticationService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('login correctly', async () => {
+  xit('login correctly', async () => {
     (await service.login({name: "user", password: "password"})).subscribe(
       r => {
         expect(r).toBeTruthy();
