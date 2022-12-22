@@ -33,6 +33,6 @@ build_image:
     - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   script:
     - npm install
-    - ng build --prod
+    - ng build --configuration production
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
