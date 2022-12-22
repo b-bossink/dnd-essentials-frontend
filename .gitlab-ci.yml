@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 image: node:16.17.0
 before_script: npm ci
+=======
+
+>>>>>>> main
 workflow:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
