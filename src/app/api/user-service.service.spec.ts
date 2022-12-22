@@ -1,5 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { StorageKeys } from '../storage-keys';
 
 import { UserService } from './user-service.service';
 
@@ -33,6 +34,7 @@ describe('UserServicee', () => {
 
 
   it('read data', async () => {
+    localStorage.setItem(StorageKeys.token, "abc");
     (await service.getCharacters(0)).subscribe(
       r => {
         expect(r).toBeTruthy();

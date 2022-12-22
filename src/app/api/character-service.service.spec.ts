@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CharacterService } from './character-service.service';
 import { HttpStatusCode } from '@angular/common/http';
+import { StorageKeys } from '../storage-keys';
 
 const testCharacters = {
   post: {
@@ -32,6 +33,7 @@ describe('CharacterService', () => {
   });
 
   it('post data', async () => {
+    localStorage.setItem(StorageKeys.token, "abc");
     (await service.post(testCharacters.post)).subscribe(
       r => {
         expect(r).toBeTruthy();
@@ -44,6 +46,7 @@ describe('CharacterService', () => {
   });
 
   it('delete data', async () => {
+    localStorage.setItem(StorageKeys.token, "abc");
     (await service.delete(23)).subscribe(
       r => {
         expect(r).toBeTruthy();
