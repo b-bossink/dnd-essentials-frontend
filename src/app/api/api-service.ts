@@ -1,5 +1,5 @@
 
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { StorageKeys } from '../storage-keys';
 @Injectable()
@@ -11,8 +11,9 @@ export abstract class APIService {
       this.http = httpClient;
   }
 
-  protected tokenParam() {
-    return "?token=" + localStorage.getItem(StorageKeys.token);
+  protected reqOptions = 
+  {
+    headers: new HttpHeaders({'Authorization': `Bearer ${localStorage.getItem(StorageKeys.token)}`}) 
   }
 
   protected abstract getURL() : string;

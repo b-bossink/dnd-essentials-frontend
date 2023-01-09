@@ -10,7 +10,7 @@ export class UserService extends APIService {
 
   public get(id: number) {
     let result = new Subject<any>();
-    this.http.get(this.getURL() + "/" + id).subscribe({
+    this.http.get(this.getURL() + "/" + id, this.reqOptions).subscribe({
       next: res => result.next(res),
       error: err => result.next(err)
     });
@@ -19,7 +19,7 @@ export class UserService extends APIService {
 
   public getCharacters(userId: number) {
     let result = new Subject<any>();
-    this.http.get(this.getURL() + "/" + userId + "/character" + this.tokenParam()).subscribe({
+    this.http.get(this.getURL() + "/" + userId + "/character", this.reqOptions).subscribe({
       next: res => result.next(res),
       error: err => result.next(err)
     });
@@ -28,7 +28,7 @@ export class UserService extends APIService {
 
   public getCampaigns(userId: number) {
     let result = new Subject<any>();
-    this.http.get(this.getURL() + "/" + userId + "/campaign" + this.tokenParam()).subscribe({
+    this.http.get(this.getURL() + "/" + userId + "/campaign", this.reqOptions).subscribe({
       next: res => result.next(res),
       error: err => result.next(err)
     });
