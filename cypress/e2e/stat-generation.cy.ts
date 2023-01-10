@@ -3,6 +3,8 @@ import { result } from "cypress/types/lodash";
 import { e2eUtils } from "./e2e-utils";
 
 describe('empty spec', () => {
+  before(() => cy.login('http://localhost:4200/character', 'boris', 'wachtwoord123'));
+  
   it('generate character stats', () => {
     cy.intercept('POST', 'https://localhost:5001/api/generate').as('generateRequest');
     cy.visit('http://localhost:4200/character/create');
