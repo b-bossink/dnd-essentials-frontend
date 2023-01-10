@@ -19,6 +19,10 @@ export class CharacterService extends APIService {
     return await this.http.get<[]>(this.getURL() + "/classes",  this.reqOptions);
   }
 
+  public async getAll() {
+    return await this.http.get<[]>(this.getURL(),  this.reqOptions);
+  }
+
   public async post(character: Character) {
       return await this.http.post(this.getURL(), character, this.reqOptions);
   }

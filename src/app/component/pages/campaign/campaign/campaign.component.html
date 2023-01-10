@@ -1,0 +1,14 @@
+<div *ngIf="campaign.name != null && ownerName != null else loading">
+    <h1> {{campaign.name}} </h1> created by <a>{{ownerName}}</a>
+    <br>
+    Includes characters:
+    <ul>
+        <li *ngFor="let m of members">{{m.name}}</li>
+    </ul>
+    
+    <button routerLink="./edit">Manage Characters</button> <button (click)="delete()">Delete</button>
+    </div>
+    
+    <ng-template #loading>
+        <app-loading></app-loading>
+    </ng-template>

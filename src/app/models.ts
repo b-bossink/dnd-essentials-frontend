@@ -11,6 +11,12 @@ export interface Character {
     charisma: number;
 }
 
+export interface Campaign {
+    name: string;
+    characterIds: number[];
+    ownerId: number;
+}
+
 export interface User {
     id: number;
     username: string;

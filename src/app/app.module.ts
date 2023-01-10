@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { CharacterComponent } from './component/pages/character/character/character.component'
@@ -19,6 +19,9 @@ import { LoadingComponent } from './component/loading/loading.component';
 import { AllCampaignsComponent } from './component/pages/campaign/all-campaigns/all-campaigns.component';
 import { StatsGenerationComponent } from './component/pages/character/stats-generation/stats-generation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CampaignCreationComponent } from './component/pages/campaign/campaign-creation/campaign-creation.component';
+import { CampaignComponent } from './component/pages/campaign/campaign/campaign.component';
+import { EditCampaignComponent } from './component/pages/campaign/edit-campaign/edit-campaign.component';
 
 @NgModule({
   declarations: [
@@ -31,20 +34,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditCharacterComponent,
     LoadingComponent,
     AllCampaignsComponent,
-    StatsGenerationComponent
+    StatsGenerationComponent,
+    CampaignCreationComponent,
+    CampaignComponent,
+    EditCampaignComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     MatDialogModule,
     RouterModule.forRoot([
       { path: 'character/create', component: CharacterCreationComponent },
       { path: 'character', component: AllCharactersComponent },
       { path: 'character/:id', component: CharacterComponent },
       { path: 'character/:id/edit', component: EditCharacterComponent },
+      { path: 'campaign/create', component: CampaignCreationComponent },
       { path: 'campaign', component: AllCampaignsComponent },
+      { path: 'campaign/:id', component: CampaignComponent },
+      { path: 'campaign/:id/edit', component: EditCampaignComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent } ]),
     BrowserAnimationsModule

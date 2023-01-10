@@ -1,0 +1,18 @@
+<h3>Create new campaign</h3>
+<form #campaignForm="ngForm" (ngSubmit)="onSubmit(campaignForm.value)">
+    Name:
+    <input type="text" name="name" ngModel><br>
+    Characters:
+    <ng-container *ngFor="let characterForm of characters.controls; let i = index">
+        <div [formGroup]="characterForm">
+            <select formControlName="character">           
+        <option [value]="c.id" *ngFor="let c of chars">
+            {{c.name}}
+        </option>
+            </select>
+        </div>
+    </ng-container>
+    <button type="button" (click)="addCharacter()">Add another character</button>
+    <br><br>
+    <input type="submit" value="Create">
+</form>
