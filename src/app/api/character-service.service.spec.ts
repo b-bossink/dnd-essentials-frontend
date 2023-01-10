@@ -40,7 +40,7 @@ describe('CharacterService', () => {
         expect(r).toBe(HttpStatusCode.Ok);
       }
     );
-    const req = httpMock.expectOne("https://localhost:5001/api/character?token=abc");
+    const req = httpMock.expectOne("https://localhost:5001/api/character");
     expect(req.request.method).toBe('POST');
     req.flush(HttpStatusCode.Ok);
   });
@@ -53,7 +53,7 @@ describe('CharacterService', () => {
         expect(r).toBe(HttpStatusCode.Ok);
       }
     );
-    const req = httpMock.expectOne("https://localhost:5001/api/character/23?token=abc");
+    const req = httpMock.expectOne("https://localhost:5001/api/character/23");
     expect(req.request.method).toBe('DELETE');
     req.flush(HttpStatusCode.Ok);
   });

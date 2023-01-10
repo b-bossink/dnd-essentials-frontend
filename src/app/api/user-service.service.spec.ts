@@ -41,7 +41,7 @@ describe('UserServicee', () => {
         expect(r).toBe(testData);
       }
     );
-    const req = httpMock.expectOne("https://localhost:5001/api/user/0/character?token=abc");
+    const req = httpMock.expectOne("https://localhost:5001/api/user/0/character");
     expect(req.request.method).toBe('GET');
     req.flush(testData)
   });
